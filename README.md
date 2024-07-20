@@ -12,7 +12,7 @@ It finds every visit to my "download page" from YouTube and adds the visiting IP
 The resulting file is a .cheatwanters file with one IP per line.  
 I made this just to laugh at how many people want cheats.  I don't do anything else with the data.  
 
-## GMod Weapon Packer
+## GMod Weapon Unpacker
 This program takes all Garry's Mod SWep folders in a given folder and "unpacks" them.  
 Weapon files that are structured like weapons/classname/shared.lua are unpacked to weapons/classname.lua.  
 This makes it easier to open multiple weapon files at one time.  
