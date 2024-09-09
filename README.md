@@ -20,3 +20,9 @@ This makes it easier to open multiple weapon files at one time.
 ## Roman Numeral Translator
 This program translates any given Arabic number to Roman Numerals.  
 I can't comment on the efficiency or optimization of this one, but it works.
+
+## NPC-Playermodel Translator  
+This program recursively searches all subfolders of the input folder and edits QC files.  
+It removes NPC-specific sequences and animations, and replaces any includemodel  
+statements with the one needed for playermodels.  
+This one is poorly-written, but it gets the job done, at least for the NPC pack I used.
