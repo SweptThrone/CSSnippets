@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 
 /*
 Name:  NPC-Playermodel Translator
@@ -16,9 +16,12 @@ void TranslateQCFile( string fileName ) {
 
     byte[] fileIn = new byte[ fs.Length ];
     int n = fs.Read( fileIn, 0, ( int )fs.Length );
-    string fileStr = Encoding.ASCII.GetString( fileIn ) ?? "NO BYTES FOUND";
+    string fileStr = Encoding.UTF8.GetString( fileIn ) ?? "NO BYTES FOUND";
 
     Console.Write( "Processing " + new DirectoryInfo( fileName ).Name + "..." );
+
+    // remove carriage returns
+    fileStr = fileStr.Replace( "\r", "" );
 
     // remove includemodels since playermodels don't need them
     int startPos = 0;
@@ -73,13 +76,10 @@ void TranslateQCFile( string fileName ) {
     fs.Close();
 
     // try to clean up the holes we left
-    while ( fileStr.Contains( "\r\n\r\n\r\n" ) ) {
-        fileStr = fileStr.Replace( "\r\n\r\n\r\n", "\r\n" );
-    }
+    fileStr = fileStr.Replace( "\n\n\n", "\n" );
 
-    while ( fileStr.Contains( "\n\n\n" ) ) {
-        fileStr = fileStr.Replace( "\n\n\n", "\n" );
-    }
+    // restore CRLFs
+    fileStr = fileStr.Replace( "\n", "\r\n" );
 
     // create a new file to overwrite
     FileStream outStream = File.Create( fileName );
@@ -102,9 +102,6 @@ void SearchDir( string dirName ) {
         SearchDir( dirName + @"\" + new DirectoryInfo( dir ).Name );
     }
 }
-
-// usage:
-// SearchDir( @"C:\Users\SweptThrone\Desktop\gangmodels\npcout" );
 
 void Main() {
     Console.Write( "Enter a folder path >> " );
