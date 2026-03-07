@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-
 /*
 Name:  Traffic Tracker
 Author:  SweptThrone (sweptthr.one)
@@ -215,3 +212,4 @@ namespace TrafficTracker {
         }
     }
 }
+
