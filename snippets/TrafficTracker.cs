@@ -1,4 +1,7 @@
-﻿/*
+using System;
+using System.IO;
+
+/*
 Name:  Traffic Tracker
 Author:  SweptThrone (sweptthr.one)
 Description:  A console app that again parses access logs
@@ -9,12 +12,13 @@ Config:  .NET Framework 10.0, C# 14.0, compiler version 5.0.0-2.25612.105 (44525
 */
 
 namespace TrafficTracker {
-    string myIP = "XXX.XXX.XXX.XXX";
-
     internal class TrafficTracker {
         // in:  path to file to parse
         // out:  null, creates a file named ".addonvisits" which is a newline-separated file of addon names and visits
+
         static void Main( string[] args ) {
+            string myIP = "XXX.XXX.XXX.XXX";
+
             Dictionary<string, string> addonLookup = new() {
                 { "909154852", "(SweptThrone Catalogue)" },
 
