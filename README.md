@@ -6,7 +6,8 @@ Takes a standard website traffic log and outputs a .cheatwanters file containing
 a list of IP addresses of visits to a specific file on my website.  
 I made a video of me using fake cheats in a game and put a download link in the  
 description.  It led to a trollface PNG.  This program finds how many people did  
-that just because I really like statistics.
+that just because I really like statistics.  
+⚠️ Largely useless as compiled since it relies on a specific web server setup.  
 
 ## NPCToPlayerModel
 Takes a folder of Garry's Mod or Source Engine NPC models and recursively turns  
@@ -22,6 +23,7 @@ Very similar to the poorly-named AccessLogParser.  Analyzes a web traffic log
 and outputs how many visits each of my Garry's Mod addons has received based on  
 hits on images embedded in each page.  Once gain, made simply because I really  
 like statistics.
+⚠️ Largely useless as compiled since it relies on a specific web server setup.  
 
 ## WeaponUnpacker
 Takes a Garry's Mod weapon folder structured like `weapon_class/shared.lua` and  
