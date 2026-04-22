@@ -22,7 +22,7 @@ limit but anything over 3999 is technically invalid.
 Very similar to the poorly-named AccessLogParser.  Analyzes a web traffic log  
 and outputs how many visits each of my Garry's Mod addons has received based on  
 hits on images embedded in each page.  Once gain, made simply because I really  
-like statistics.
+like statistics.  
 ⚠️ Largely useless as compiled since it relies on a specific web server setup.  
 
 ## WeaponUnpacker
