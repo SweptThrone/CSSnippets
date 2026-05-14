@@ -10,9 +10,9 @@ that just because I really like statistics.
 ⚠️ Largely useless as compiled since it relies on a specific web server setup.  
 
 ## NPCToPlayerModel
-Takes a folder of Garry's Mod or Source Engine NPC models and recursively turns  
-them all into valid Garry's Mod playermodels.  This program is DESTRUCTIVE, it  
-finds NPC models and edits the files themselves to change them.
+Takes a folder of Garry's Mod or Source Engine NPC QC files and recursively  
+turns them all into valid Garry's Mod playermodel QC files.  This program is  
+DESTRUCTIVE, it finds NPC models and edits the files themselves to change them.  
 
 ## RomanNumeralTranslator
 Takes a number and outputs the Roman numeral notation for it.  Has no actual  
