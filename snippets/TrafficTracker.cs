@@ -166,7 +166,8 @@ namespace TrafficTracker {
                 { "3637802612", "STPowder" },
                 { "3638675626", "STGunrunning" },
                 { "3639230317", "STOilMogul" },
-                { "3640287574", "STFishing Neu" }
+                { "3640287574", "STFishing Neu" },
+                { "3681361135", "TTT_OceanTown_ST" }
             };
 
             string? line;
@@ -184,14 +185,20 @@ namespace TrafficTracker {
                 Console.WriteLine( "No filename was provided...quitting..." );
                 return;
             }
-            StreamReader reader = new StreamReader( fileName );
-            StreamWriter writer = new StreamWriter( ".addonvisits" );
+
+            Console.Write( "Enter your IP address > " );
+            myIP = Console.ReadLine() ?? "XXX.XXX.XXX.XXX";
+            
+            string cd = fileName.Replace( "\"", "" );
+
+            StreamReader reader = new StreamReader( cd );
+            StreamWriter writer = new StreamWriter( Path.GetDirectoryName( cd ) + @"\.addonvisits" );
             line = reader.ReadLine();
 
             Dictionary< string, int > visits = [];
 
             while ( line != null ) {
-                if ( line.Contains( "/img/neucontact.png?a=" ) && line.Substring( 0, myIP.Length ) != myIP ) {
+                if ( line.Contains( "/img/neucontact.png?a=" ) && line[ .. myIP.Length ] != myIP ) {
 
                     lineOut = line.Substring( line.IndexOf( "/img/neucontact.png?a=" ) + "/img/neucontact.png?a=".Length, line.IndexOf( " HTTP/1.1" ) - line.IndexOf( "/img/neucontact.png?a=" ) - "/img/neucontact.png?a=".Length );
                     if ( visits.ContainsKey( lineOut ) ) {
@@ -206,10 +213,17 @@ namespace TrafficTracker {
             var sortedVisitors = from kvPair in visits orderby kvPair.Value descending select kvPair;
 
             foreach ( KeyValuePair< string, int > kv in sortedVisitors ) {
-                writer.WriteLine( addonLookup[ kv.Key ] + ": " + kv.Value );
-                writer.Flush();
+                if ( addonLookup.ContainsKey( kv.Key ) ) {
+                    writer.WriteLine( addonLookup[ kv.Key ] + ": " + kv.Value );
+                    writer.Flush();
+                } else {
+                    writer.WriteLine( " * " + kv.Key + ": " + kv.Value );
+                    writer.Flush();
+                }
             }
+            writer.Close();
+
+            System.Diagnostics.Process.Start( "notepad.exe", Path.GetDirectoryName( cd ) + @"\.addonvisits" );
         }
     }
 }
-
